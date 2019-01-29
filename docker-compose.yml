@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  nginx:
+    build: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - /path/to/site:/var/www/public/site
+  mariadb:
+    image: mariadb/server
+    ports:
+      - "3306:3306"
+    environment:
+      - MARIADB_ROOT_PASSWORD=12345678
+    volumes:
+      - ./maria/my.cnf:/etc/mysql/conf.d/my.cnf
+      - /path/to/data/dir:/var/lib/mysql
